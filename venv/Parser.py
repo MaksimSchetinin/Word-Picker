@@ -15,10 +15,10 @@ class Data:
         for i in range(1, math.ceil(pages) + 1):
             page = requests.get(self.URL + str(i))
             soup = BeautifulSoup(page.content, "html.parser")
-            job_elements = soup.find_all("span", class_="word-item")
-            for job in job_elements:
-                num = job.find("span", class_="word-num")
-                s = str(job.text.strip())
+            elements = soup.find_all("span", class_="word-item")
+            for element in elements:
+                num = element.find("span", class_="word-num")
+                s = str(element.text.strip())
                 s1 = str(num.text.strip())
                 print(s.replace(s1, "").strip())
                 bd.append(s.replace(s1, "").strip())
